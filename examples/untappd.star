@@ -77,6 +77,7 @@ def main():
                 )
             )
         number_of_beers = user_info.json()["response"]["user"]["stats"]["total_beers"]
+        number_of_beers = str(number_of_beers)
         cache.set(KEY_NUMBER_OF_BEERS, str(number_of_beers), ttl_seconds=300)
     
     return render.Root(
@@ -97,7 +98,7 @@ def main():
                                 height=8,
                                 child=render.Text(beer)
                             ),
-                            render.Text("#%d" % number_of_beers)
+                            render.Text("#" + number_of_beers)
                         ]
                     )
                 )
