@@ -26,7 +26,26 @@ def main():
         print("Miss! Beer is not cached. Calling Untappd API")
         user_feed = http.get(UNTAPPD_USER_FEED)
         if user_feed.status_code != 200:
-            fail("Untappd user feed request failed")
+            return render.Root(
+                render.Row(
+                    children=[
+                        render.Box(
+                            width=36, 
+                            height=32,
+                            child=render.Image(src=UNTAPPD_LOGO),
+                        ),
+                        render.Box(
+                            width=36,
+                            height=32,
+                            child=render.Text(
+                                content="ERROR",
+                                color="#f00",
+                                width=24,
+                            )
+                        )
+                    ]
+                )
+            )
         beer = user_feed.json()["response"]["checkins"]["items"][0]["beer"]["beer_name"]
         cache.set(KEY_BEER, beer, ttl_seconds=300)
 
@@ -37,9 +56,28 @@ def main():
         print("Miss! Number of beers is not cached. Calling Untappd API")
         user_info = http.get(UNTAPPD_USER_INFO)
         if user_info.status_code != 200:
-            fail("Untappd user info request failed")
+            return render.Root(
+                render.Row(
+                    children=[
+                        render.Box(
+                            width=36, 
+                            height=32,
+                            child=render.Image(src=UNTAPPD_LOGO),
+                        ),
+                        render.Box(
+                            width=36,
+                            height=32,
+                            child=render.Text(
+                                content="ERROR",
+                                color="#f00",
+                                width=24,
+                            )
+                        )
+                    ]
+                )
+            )
         number_of_beers = user_info.json()["response"]["user"]["stats"]["total_beers"]
-        cache.set(KEY_NUMBER_OF_BEERS, number_of_beers, ttl_seconds=300)
+        cache.set(KEY_NUMBER_OF_BEERS, str(number_of_beers), ttl_seconds=300)
     
     return render.Root(
         render.Row(
