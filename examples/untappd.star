@@ -30,17 +30,16 @@ def main():
                 render.Row(
                     children=[
                         render.Box(
-                            width=36, 
+                            width=28, 
                             height=32,
                             child=render.Image(src=UNTAPPD_LOGO),
                         ),
                         render.Box(
                             width=36,
                             height=32,
-                            child=render.Text(
-                                content="ERROR",
+                            child=render.WrappedText(
+                                content="API ERROR",
                                 color="#f00",
-                                width=24,
                             )
                         )
                     ]
@@ -60,17 +59,16 @@ def main():
                 render.Row(
                     children=[
                         render.Box(
-                            width=36, 
+                            width=28, 
                             height=32,
                             child=render.Image(src=UNTAPPD_LOGO),
                         ),
                         render.Box(
                             width=36,
                             height=32,
-                            child=render.Text(
-                                content="ERROR",
+                            child=render.WrappedText(
+                                content="API ERROR",
                                 color="#f00",
-                                width=24,
                             )
                         )
                     ]
@@ -84,7 +82,7 @@ def main():
         render.Row(
            children=[
                render.Box(
-                   width=36, 
+                   width=28, 
                    height=32,
                    child=render.Image(src=UNTAPPD_LOGO),
                 ),
