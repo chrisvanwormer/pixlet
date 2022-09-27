@@ -8,6 +8,7 @@ UNTAPPD_USER_FEED = "https://api.untappd.com/v4/user/checkins/theendallbeerall?c
 UNTAPPD_USER_INFO = "https://api.untappd.com/v4/user/info/theendallbeerall?client_id=FE16B46AD5A1248F6033553BE89BFDCC540A3BD8&client_secret=2A3A4B42C64E8BA299F6876512C5B20628308627"
 
 # CACHE KEYS
+KEY_BREWERY = "brewery"
 KEY_BEER = "beer"
 KEY_NUMBER_OF_BEERS = "number_of_beers"
 
@@ -17,10 +18,12 @@ iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACeUlEQVQ4jY3V34tVVRQH8M85c5yZe4dm
 """)
 
 def main():
+    brewery_cached = cache.get("brewery")
     beer_cached = cache.get("beer")
     number_of_beers_cached = cache.get("number_of_beers")
     if beer_cached != None:
         print("Hit! Beer is cached and serving cached data.")
+        brewery = brewery_cached
         beer = beer_cached
     else:
         print("Miss! Beer is not cached. Calling Untappd API")
@@ -45,7 +48,9 @@ def main():
                     ]
                 )
             )
+        brewery = user_feed.json()["response"]["checkins"]["items"][0]["brewery"]["brewery_name"]
         beer = user_feed.json()["response"]["checkins"]["items"][0]["beer"]["beer_name"]
+        cache.set(KEY_BREWERY, brewery, ttl_seconds=300)
         cache.set(KEY_BEER, beer, ttl_seconds=300)
 
     if number_of_beers_cached != None:
@@ -94,7 +99,7 @@ def main():
                             render.Marquee(
                                 width=36,
                                 height=8,
-                                child=render.Text(beer)
+                                child=render.Text(brewery + ": " + beer)
                             ),
                             render.Text("#" + number_of_beers)
                         ]
