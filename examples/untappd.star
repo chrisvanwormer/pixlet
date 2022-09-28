@@ -7,9 +7,13 @@ load("cache.star", "cache")
 # DEVICE ID: querulously-placid-meaningful-macaque-161
 # API KEY: eyJhbGciOiJFUzI1NiIsImtpZCI6IjY1YzFhMmUzNzJjZjljMTQ1MTQyNzk5ODZhMzYyNmQ1Y2QzNTI0N2IiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJodHRwczovL2FwaS50aWRieXQuY29tIiwiZXhwIjoxNjY5MjU4NDAxLCJpYXQiOjE2Mzc3MjI0MDEsImlzcyI6Imh0dHBzOi8vYXBpLnRpZGJ5dC5jb20iLCJzdWIiOiJqZFZlNXo1RGJpUUhDdEVsbkpSSnIxZWhpRWkyIiwic2NvcGUiOiJkZXZpY2UiLCJkZXZpY2UiOiJxdWVydWxvdXNseS1wbGFjaWQtbWVhbmluZ2Z1bC1tYWNhcXVlLTE2MSJ9.TJ9uygj4dFHnZQgN6ei7f5lk0CUDl_cv_0V6km23qYZoBmPSFdF6fyHd-XI4J2C8ECQhxktQqkpfRdehGM_CMw
 
+# UNTAPPD API KEYS
+UNTAPPD_CLIENT_ID = "FE16B46AD5A1248F6033553BE89BFDCC540A3BD8"
+UNTAPPD_SECRET_ID = "2A3A4B42C64E8BA299F6876512C5B20628308627"
+
 # API ENDPOINTS
-UNTAPPD_USER_FEED = "https://api.untappd.com/v4/user/checkins/theendallbeerall?client_id=FE16B46AD5A1248F6033553BE89BFDCC540A3BD8&client_secret=2A3A4B42C64E8BA299F6876512C5B20628308627"
-UNTAPPD_USER_INFO = "https://api.untappd.com/v4/user/info/theendallbeerall?client_id=FE16B46AD5A1248F6033553BE89BFDCC540A3BD8&client_secret=2A3A4B42C64E8BA299F6876512C5B20628308627"
+UNTAPPD_USER_FEED = "https://api.untappd.com/v4/user/checkins/theendallbeerall?client_id=" + UNTAPPD_CLIENT_ID + "&client_secret=" + UNTAPPD_SECRET_ID
+UNTAPPD_USER_INFO = "https://api.untappd.com/v4/user/info/theendallbeerall?client_id=" + UNTAPPD_CLIENT_ID + "&client_secret=" + UNTAPPD_SECRET_ID
 
 # CACHE KEYS
 KEY_BREWERY = "brewery"
